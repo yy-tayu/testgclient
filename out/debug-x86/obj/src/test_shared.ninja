@@ -1,0 +1,18 @@
+defines = -DIR_WEBRTC_EXPORTS -DX11
+include_dirs = -I../../src/include
+cflags = -fPIC -pthread
+cflags_cc =
+target_out_dir = obj/src
+target_output_name = libtest_shared
+
+build obj/src/testing/test_shared_library/libtest_shared.testshared.o: cxx ../../src/testing/test_shared_library/testshared.cpp
+  source_file_part = testshared.cpp
+  source_name_part = testshared
+
+build ./libtest_shared.so: solink obj/src/testing/test_shared_library/libtest_shared.testshared.o
+  ldflags =
+  libs =
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .

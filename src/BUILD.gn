@@ -1,0 +1,21 @@
+config("3dr_dir") {
+include_dirs = ["include"]
+}
+
+shared_library("test_shared") {
+  sources = [
+    "testing/test_shared_library/testshared.h",
+    "testing/test_shared_library/testshared.cpp",
+  ]
+  public_configs = [ ":3dr_dir" ]
+  deps = []
+  defines = [ "IR_WEBRTC_EXPORTS","X11" ]
+}
+
+
+executable("test_gn") {
+  sources = [
+    "testing/test_gn/test_gn.cpp",
+  ]
+  deps = []
+}

@@ -1,0 +1,9 @@
+# import("third_party/webrtc/webrtc.gni")
+import ("src/testing/testing.gni")
+group("default") {
+    deps = ["//src:test_shared"]
+    if(native_testing)
+    {
+        deps += [ "//src:test_gn" ]
+    }
+}

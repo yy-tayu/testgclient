@@ -1,0 +1,18 @@
+defines =
+include_dirs =
+cflags = -fPIC -pthread
+cflags_cc =
+target_out_dir = obj/src
+target_output_name = test_gn
+
+build obj/src/testing/test_gn/test_gn.test_gn.o: cxx ../../src/testing/test_gn/test_gn.cpp
+  source_file_part = test_gn.cpp
+  source_name_part = test_gn
+
+build test_gn: link obj/src/testing/test_gn/test_gn.test_gn.o
+  ldflags = -Wl,-rpath=\$$ORIGIN/ -Wl,-rpath-link=
+  libs =
+  frameworks =
+  swiftmodules =
+  output_extension = 
+  output_dir = .
