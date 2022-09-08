@@ -1,6 +1,7 @@
-# import("third_party/webrtc/webrtc.gni")
-import ("build_overrides/build_overrides.gni")
+#import("third_party/webrtc/webrtc.gni")
+import ("build_overrides/build.gni")
 group("default") {
+    #deps = ["//third_party/owt_client_native/talk/owt:owt_sdk_objc"]
     deps = ["//src:test_shared"]
     if(native_testing)
     {

@@ -4,32 +4,24 @@
 #include <functional>
 #include <vector>
 
-#ifdef X11
-#ifdef IR_TEST_EXPORTS
-#define IR_TEST_EXPORTS __attribute__ ((visibility("default")))
-#else 
+#if defined(WIN32)
+#if defined(HELLO_SHARED_IMPLEMENTATION)
+#define IR_TEST_EXPORTS __declspec(dllexport)
+#define IR_TEST_EXPORTS_PRIVATE __declspec(dllexport)
+#else
+#define IR_TEST_EXPORTS __declspec(dllimport)
+#define IR_TEST_EXPORTS_PRIVATE __declspec(dllimport)
+#endif  // defined(HELLO_SHARED_IMPLEMENTATION)
+#else
+#if defined(HELLO_SHARED_IMPLEMENTATION)
+#define IR_TEST_EXPORTS __attribute__((visibility("default")))
+#define IR_TEST_EXPORTS_PRIVATE __attribute__((visibility("default")))
+#else
 #define IR_TEST_EXPORTS
-#endif
+#define IR_TEST_EXPORTS_PRIVATE
+#endif  // defined(HELLO_SHARED_IMPLEMENTATION)
 #endif
 
-enum class STREAM_TYPE : int
-{
-    kScreenCast = 1,
-    kYUV,
-    kH264,
-};
-
-struct ir_test_info
-{
-    std::string local_id_;
-    std::string remote_id_;
-    std::string signaling_address_;
-    std::string stun_address_;
-    std::string trun_address_;
-    uint16_t video_width_;
-    uint16_t video_height_;
-    STREAM_TYPE stream_type_;
-};
 
 IR_TEST_EXPORTS void ir_test_init();
 

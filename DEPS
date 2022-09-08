@@ -92,10 +92,20 @@ deps = {
     'url': Var('chromium_git') + '/chromium/src/ios' + '@' + '5720c93651b31160238c133f69e7a05366360e19',
     'condition': 'checkout_ios',
   },
+  # OWT Patch
+  'src/third_party/usrsctp/usrsctplib':
+    Var('chromium_git') + '/external/github.com/sctplab/usrsctp' + '@' + '2caaff2b0a1d550751bb6aa1aaa6ece4829848d4',
+  'src/third_party/libsrtp':
+   Var('chromium_git') + '/chromium/deps/libsrtp.git' + '@' + '6907d995c7975c2865f6f94f79638c25c342e95c',
+  'src/third_party/ffmpeg':
+    Var('chromium_git') + '/chromium/third_party/ffmpeg.git' + '@' + '6d9096c9e3f7f5d4e6528104ed77987ec9327315',
+
   'src/testing':
     Var('chromium_git') + '/chromium/src/testing' + '@' + 'd54c4bf27e02291ec35e4c040e47c09e02d8a452',
   'src/third_party':
     Var('chromium_git') + '/chromium/src/third_party' + '@' + '346e496c9b3e7ac74b3f0c8ac8980fe834d5fee8',
+  'src/third_party/depot_tools':
+    Var('chromium_git') + '/chromium/tools/depot_tools.git' + '@' + '17cd53de67f982f123bfa6458780c31705221e60',
   'src/buildtools/linux64': {
     'packages': [
       {
@@ -430,6 +440,17 @@ hooks = [
     'pattern': '.',
     'action': ['python',
                'src/scripts/prepare_dev.py'],
+  },
+  {
+    # Prepare environment for OWT development.
+    'pattern': '.',
+    'action': ['python',
+               'src/scripts/build_linux.py',
+               '--gn_gen',
+               '--sdk', 
+               '--output_path',
+               '../test-build'
+               ],
   },
 ]
 
