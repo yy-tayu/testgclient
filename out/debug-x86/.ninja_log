@@ -1,6 +1,0 @@
-# ninja log v5
-1	550	1662521489903810572	obj/src/testing/test_gn/test_gn.test_gn.o	b134139f8925de63
-550	646	1662521490451825452	test_gn	203b340a6de74db
-2	681	1662521489903810572	obj/src/testing/test_shared_library/libtest_shared.testshared.o	130f3387935c488f
-681	773	1662521490583829036	libtest_shared.so	2c4897f9787437d
-773	775	1662521490671831425	obj/default.stamp	779238219a0eff9c

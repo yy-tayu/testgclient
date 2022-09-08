@@ -1,6 +1,0 @@
-native_testing = true
-target_cpu = "x86"
-is_clang = false
-is_debug = true
-rtc_include_tests = true
-owt_include_tests = true
