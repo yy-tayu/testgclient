@@ -61,7 +61,8 @@ buildconfig = "//build/config/BUILDCONFIG.gn"
 # architecture, or other build parameters. If you really need that, the other
 # repo should define a flag that toggles on a behavior that implements the
 # additional logic required by Chrome to set the variables.
-default_args = {}
+default_args = {
+}
 
 # These are the targets to check headers for by default. The files in targets
 # matching these patterns (see "gn help label_pattern" for format) will have
