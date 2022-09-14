@@ -1,0 +1,3 @@
+declare_args() {
+    aonyx_include_tests = false
+}

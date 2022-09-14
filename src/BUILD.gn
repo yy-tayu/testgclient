@@ -2,29 +2,14 @@ config("3dr_dir") {
 include_dirs = ["include"]
 }
 
-executable("test_using_library") {
-  sources = [
-    "testing/test_using_library/test_using_library.cpp",
-  ]
-  include_dirs = ["testing/test_shared_library"]
-  deps = [
-    ":test_shared",
-  ]
-}
-
-static_library("test_static") {
-  sources = [
-    "testing/test_shared_library/testshared.h",
-    "testing/test_shared_library/testshared.cpp",
-  ]
-}
-
 shared_library("test_shared") {
   sources = [
     "testing/test_shared_library/testshared.h",
     "testing/test_shared_library/testshared.cpp",
   ]
-  defines = [ "TEST_SHARED_IMPLEMENTATION" ]
+  public_configs = [ ":3dr_dir" ]
+  deps = []
+  defines = [ "IR_WEBRTC_EXPORTS","X11" ]
 }
 
 
